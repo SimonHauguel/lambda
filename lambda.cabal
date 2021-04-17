@@ -1,0 +1,71 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: df605e2a9b001416fd0bb205b6868d118836c9ba17c1b298afb4c06f4c242e78
+
+name:           lambda
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/lambda#readme>
+homepage:       https://github.com/githubuser/lambda#readme
+bug-reports:    https://github.com/githubuser/lambda/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2021 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/lambda
+
+library
+  exposed-modules:
+      Eval.Eval
+    , Eval.EvalTools
+    , LambdaData.Data
+    , Parser.LambdaParser
+  other-modules:
+      Paths_lambda
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , parsec >= 3.1.14.0
+    , prettyprinter
+    , hashmap
+  default-language: Haskell2010
+
+executable lambda-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_lambda
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , lambda
+    , haskeline
+    , prettyprinter
+  default-language: Haskell2010
+
+test-suite lambda-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_lambda
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , lambda
+    , HUnit
+  default-language: Haskell2010
